@@ -1,0 +1,96 @@
+가) 정해진 색에서 랜덤한 색을 선택하는경우 
+1. array로 랜덤 한 색을 모아준다
+const color=["red","blue","orange","pink"];
+const btn= document.querySelector("input");
+const colorname= document.querySelector(".color-name");
+
+2.math를 이용해서 random한 수를 구해 인덱스로 이용해준다 
+function changeColor(){
+    const random = Math.floor(Math.random()*color.length)
+
+    document.body.style.backgroundColor= color[random];
+    colorname.innerText=color[random];
+
+}
+3.click 이벤트 발생시 진행
+btn.addEventListener('click',changeColor)
+
+나) 랜덤한색을 숫자와문자를 조합해서 구해보기 
+
+1. 숫자번호(?)에 이용되는 0~9까지의 숫자와 알파벳을 넣어준다 
+/*const color=[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+const btn= document.querySelector("input");
+const colorname= document.querySelector(".color-name");
+2. ✨이용방법 첫번째✨ 
+-#에다가 단순 랜덤한 숫자를 6개를 연이어서 붙여보자는 생각을함 
+결과: 랜덤으로는 나오지만 #11111/ #AAAA..와같이 모두 같은 수가 나와서 랜덤의 의미가 없어보임  
+function changeColor(){
+    const colornum="#";
+    const random = Math.floor(Math.random()*color.length);
+    let newcolor= colornum+color[random]+color[random]+color[random]+color[random]+color[random]+color[random];
+    document.body.style.backgroundColor=newcolor;
+    colorname.innerText=newcolor;
+    console.log(newcolor)
+
+}
+btn.addEventListener('click',changeColor)*/
+
+3.✨이용방법 두번째✨
+-FOR문을 이용해보자 그런데이때 인덱스번호를 ㅋㅋㅋ i로 설정해서 랜덤한것이아니라 color의 인덱스번호가 0에서 6까지의 수만등장하는
+결과가 나왔음 
+function changeColor(){
+    let colornum="#";  
+    for(i=0; i<7;i++){
+     colornum+=color[i];
+     if(colornum.length==7){
+        document.body.style.backgroundColor=colornum;
+        colorname.innerText=colornum; }*/
+
+4.✨세번째✨
+-이번에는 for문이용해서 랜덤한 숫자를 5개를 붙여주어야하므로  for(let i=0;i<6;i++)로 진행해주었는데 이때, 
+color의 인덱스에 랜덤한 수를 구한 결과를 넣어주었음 
+🤔문제점: 첫번째 방법과 동일한 결과가 나와서, 방법을 찾지못해서 결국 튜토리얼을 확인하게되었음 
+👉차이점: 나는 결과값을 넣어주었는데 그래서 그냥 같은 수가 5번쌓이는 결과가 나왔던거고, 함수를 넣어주어서 
+계속해서 랜덤한 수를 골라주록 해주어야했다 
+
+😢실수했던내용
+const color=[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+const btn= document.querySelector("input");
+const colorname= document.querySelector(".color-name");
+
+function changeColor(){
+    const random = Math.floor(Math.random()*color.length);
+   let colornum="#";
+    for(let i=0;i<6;i++){ colornum+=color[random]}
+        console.log(colornum)
+        document.body.style.backgroundColor=colornum;
+        colorname.innerText=colornum;
+    }
+function random(){
+    return
+}
+
+btn.addEventListener('click',changeColor)*/
+
+🤔궁금한점
+
+const color=[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+let r= Math.round(Math.random()*color.length);
+function random2() {return Math.round(Math.random()*color.length)}
+이렇게 두개의 랜덤한 인덱습 번호를 구해주는 변수와 함수를 만들었을때 
+r의 경우 그냥 나온값을 넣어주는거였고,random2()의 경우 계속해서 새로운 수를 구해주는 것 
+같은데 이렇게 이해해도되는지? 
+
+let empty="#"; 
+for(i=0;i<2;i++){
+    empty += color[random2()]
+    console.log(empty);
+}
+
+empty="#"; 
+for(i=0;i<2;i++){
+    empty += color[r]
+    console.log(empty);
+}
+*/
+
